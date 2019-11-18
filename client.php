@@ -2,8 +2,8 @@
 # Copyright (c) 2007 HerongYang.com, All Rights Reserved.
 #
    $client = new SoapClient(null, array(
-      'location' => "http://localhost:8081/auth/login.php",
-      'uri'      => "http://localhost:8081/auth/login.php",
+      'location' => $_ENV["SERVER_URL"] . "/auth/login.php",
+      'uri'      => $_ENV["SERVER_URL"] . "/wsdl.php?wsdl",
       'trace'    => 1 ));
 
    $return = $client->__soapCall("login",array("a@a.com", "hola"));

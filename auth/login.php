@@ -1,4 +1,11 @@
 <?php
+    /**
+     * Obtain JWT from taurus-auth-ms for a given email and password.
+     *
+     * @param string $email user's email.
+     * @param string $password user's password.
+     * @return string JSON stringified.
+     */
     function login($email, $password) {
         //The url to send the POST request to
         $url = "http://ec2-3-231-146-168.compute-1.amazonaws.com/graphql";
@@ -26,7 +33,7 @@
     } 
 
     $server = new SoapServer(null, 
-        array('uri' => "http://ec2-3-231-146-168.compute-1.amazonaws.com/auth/soap.php"));
+        array('uri' => "http://localhost:8081/wsdl.php?wsdl"));
     
     $server->addFunction("login"); 
     $server->handle(); 
