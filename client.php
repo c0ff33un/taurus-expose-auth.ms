@@ -1,21 +1,9 @@
 <?php # HelloClient.php
 # Copyright (c) 2007 HerongYang.com, All Rights Reserved.
 #
-   $client = new SoapClient(null, array(
-      'location' => $_ENV["SERVER_URL"] . "/auth/login.php",
-      'uri'      => $_ENV["SERVER_URL"] . "/wsdl.php?wsdl",
-      'trace'    => 1 ));
+   $client = new SoapClient("http://54.39.98.125:4009/interface/wsdl");
 
-   $return = $client->__soapCall("login",array("a@a.com", "hola"));
+   $return = $client->__soapCall("createNotification", array("", 300001, 300001, 1 ));
    echo("\nReturning value of __soapCall() call: ".$return);
 
-   echo("\nDumping request headers:\n" 
-      .$client->__getLastRequestHeaders());
-
-   echo("\nDumping request:\n".$client->__getLastRequest());
-
-   echo("\nDumping response headers:\n"
-      .$client->__getLastResponseHeaders());
-
-   echo("\nDumping response:\n".$client->__getLastResponse());
 ?>
