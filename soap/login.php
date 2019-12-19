@@ -8,7 +8,7 @@
      */
     function login($email, $password) {
         //The url to send the POST request to
-        $url = $_ENV["API_URL"] . "/graphql";
+        $url = $_ENV["TAURUS_SERVER_URL"] . "/graphql";
 
         $data = [
             'query' => "mutation {login(user:{email:\"" . $email . "\" password:\"" . $password . "\"}){user{id handle email guest} jwt}}"
@@ -35,7 +35,7 @@
     } 
 
     $server = new SoapServer(null, 
-        array('uri' => "http://ec2-3-231-146-168.compute-1.amazonaws.com/soap/login.php/wsdl.php?wsdl"));
+        array('uri' => $_ENV["TAURUS_SERVER_URL"] . "/soap/login.php/wsdl.php?wsdl"));
     
     $server->addFunction("login"); 
     $server->handle(); 
